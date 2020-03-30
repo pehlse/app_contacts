@@ -109,32 +109,49 @@ class _HomePageState extends State<HomePage> {
             onClosing: () {},
             builder: (context) {
               return Container(
+                alignment: Alignment.center,
+                height: 250.0,
                 padding: EdgeInsets.all(10.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    FlatButton(
-                      child: Text(
-                        'Ligar',
-                        style: TextStyle(color: Colors.red, fontSize: 20.0),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: FlatButton(
+                        child: Text(
+                          'Ligar',
+                          style: TextStyle(color: Colors.red, fontSize: 20.0),
+                        ),
+                        onPressed: () {},
                       ),
-                      onPressed: () {},
                     ),
-                    FlatButton(
-                      child: Text(
-                        'Ligar',
-                        style: TextStyle(color: Colors.red, fontSize: 20.0),
+                     Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: FlatButton(
+                        child: Text(
+                          'Editar',
+                          style: TextStyle(color: Colors.red, fontSize: 20.0),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          _showContactPage(contact: contacts[index]);
+                        },
                       ),
-                      onPressed: () {},
                     ),
-                    FlatButton(
-                      child: Text(
-                        'Ligar',
-                        style: TextStyle(color: Colors.red, fontSize: 20.0),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: FlatButton(
+                        child: Text(
+                          'Excluir',
+                          style: TextStyle(color: Colors.red, fontSize: 20.0),
+                        ),
+                        onPressed: () {
+                          helper.deleteContact(contacts[index].id);
+                          _getAllContacts();
+                          Navigator.pop(context);
+                        },
                       ),
-                      onPressed: () {},
-                    )
+                    ),
                   ],
                 ),
               );
